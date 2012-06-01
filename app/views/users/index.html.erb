@@ -1,6 +1,7 @@
 <%= provide(:title, 'Contact') %>
 <h1>Contact</h1>
 
+
 <% @users.each do |user| %>
 <div class="row">
   <div class="span1 offset1">
@@ -13,7 +14,7 @@
   <a href="mailto:<% user.email%>"><%= user.email %></a>
   </div>
   <div class = "span2 offset7">
-    <% if current_user.admin? && !current_user?(user) %>
+    <% if signed_in? && current_user.admin? && !current_user?(user)%>
       <%= link_to "delete", user, method: :delete, confirm: "Are you sure?" %>
     <%end%>
   </div>
