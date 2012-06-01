@@ -6,7 +6,7 @@ describe "User pages" do
   
   subject{ page }
   
-  describe "index" do
+  describe "contact" do
     let(:user){FactoryGirl.create(:user)}
 
     before do
@@ -14,8 +14,8 @@ describe "User pages" do
       visit users_path
     end
 
-    it{should have_selector('title', text: 'All users')}
-    it{should have_selector('h1',    text: 'All users')}
+    it{should have_selector('title', text: 'Contact')}
+    it{should have_selector('h1',    text: 'Contact')}
   
     it "should least each user" do
       User.all.each do |user|

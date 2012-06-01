@@ -1,7 +1,19 @@
-<li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete, confirm: "you sure?" %>
-  <% end %>
-</li>
+<% @users.each do |user| %>
+<div class="row">
+  <div class="span1">
+    <%= gravatar_for user, size: 52 %>    
+  </div>
+  <div class = "span2">
+    <%= link_to user.name, user %>
+  </div>
+  <div class = "span2" %>
+    <%= link_to user.email, user %>
+  </div>
+  <div class = "span2 offset7">
+    <% if current_user.admin && !current_user(user) %>
+      <%= link_to "delete", user, method: :delete, confirm: "Are you sure?" %>
+    <%end%>
+  </div>
+</div>
+<p></p>
+<%end%>

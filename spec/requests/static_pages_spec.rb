@@ -38,15 +38,6 @@ describe "Static pages" do
     it_should_behave_like "all static pages"
   end
 
-  describe "Contact page" do
-    before{visit contact_path}
-
-    let(:heading) {'Contact'}
-    let(:page_title) {'Contact'}
-
-    it_should_behave_like "all static pages"
-  end
-
   it "should have the right links on the layout" do
     #this goes around all the links in circular fashion
     visit root_path
@@ -57,7 +48,7 @@ describe "Static pages" do
     click_link "Contact"
     page.should have_selector 'title', text: full_title('Contact')
     click_link "Home"
-    click_link "sample app"
+    click_link "MSPS"
     page.should have_selector 'title', text: full_title('')
   end
 end

@@ -1,20 +1,15 @@
 <footer class="footer">
   <small>
-    <a href="http://www.physics.mcgill.ca">McGill Department of Physics</a>
-    by Jamob The Elephant
+    © 2012 McGill Society of Physics Students. Website developed with <a href="http://rubyonrails.org/">Ruby on Rails</a> and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.
   </small>
   <nav>
     <ul>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
       <% if signed_in? %>
-        <li><%= link_to "Users", users_path %></li>
         <li><%= link_to "Profile", current_user %></li>
         <li><%= link_to "Settings", edit_user_path(current_user) %></li>
         <li>|</li>
         <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
       <% else %>
-        <li>|</li>
         <li><%= link_to "Sign in", signin_path %></li>
       <% end %>
     </ul>

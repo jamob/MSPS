@@ -14,10 +14,20 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+  font-size: 100%;
 }
 
 body {
   padding-top: 60px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ol, ul {
+  list-style: none outside none;
 }
 
 section {
@@ -42,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 4em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
@@ -58,7 +68,7 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
+  font-size: 1.2em;
   line-height: 1.7em;
 }
 
@@ -67,23 +77,23 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 2.5em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
+  padding-bottom: 3px;
   font-weight: bold;
   line-height: 1;
 
   &:hover {
-    color: #fff;
+    color: #ff0000;
     text-decoration: none;
   }
 }
 
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+pull-right{
+  color: #ff0000;
 }
 
 /* footer */
