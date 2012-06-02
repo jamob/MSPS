@@ -1,18 +1,6 @@
 <footer class="footer">
   <small>
-    © 2012 McGill Society of Physics Students. Website developed with <a href="http://rubyonrails.org/">Ruby on Rails</a> and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.
+    © 2012 McGill Society of Physics Students. Website developed with <%= link_to "Ruby on Rails", "http://rubyonrails.org/", target: "_blank" %> and <%= link_to "Twitter Bootstrap", "http://twitter.github.com/bootstrap/", target: "_blank" %>.
   </small>
-  <nav>
-    <ul>
-      <% if signed_in? %>
-        <li><%= link_to "Profile", current_user %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-        <li>|</li>
-        <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-      <% else %>
-        <li><%= link_to "Sign in", signin_path %></li>
-      <% end %>
-    </ul>
-  </nav>
 </footer>
  

@@ -16,6 +16,7 @@ describe User do
   it{should respond_to(:password_confirmation) }
   it{should respond_to(:remember_token)}
   it{should respond_to(:authenticate) }
+  it{should respond_to(:posts)}
   it{should respond_to(:admin)}
   it{should_not be_admin}
   it{should be_valid}
@@ -119,5 +120,15 @@ describe User do
   describe "remember token" do
     before{@user.save}
     its(:remember_token){should_not be_blank}
+  end
+
+  describe "micropost associations" do
+    before{@user.save}
+    let!(:older_post){FactoryGirl.create(:post, user: @user, created_at: 1.day.ago)}
+    let!(:newer_post){FactoryGirl.create(:post, user: @user, created_at: 1.hour.ago)}
+    
+    it "they should have the right bloody order" do
+      @user.posts == [newer_post, older_post]
+    end
   end
 end

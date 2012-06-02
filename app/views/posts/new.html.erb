@@ -1,0 +1,16 @@
+<% provide(:title, "New Post") %>
+<h1>New post</h1>
+<div class="row">
+  <div class="span10">
+    <%= form_for @post do |f| %>
+      <%= render 'posts/error_messages' %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label "Message"%>
+      <%= f.text_area :content, rows: 15, cols: 30 %>
+      <%= f.submit "Submit post", class: "btn btn-large btn-primary" %>
+    </div>
+  <%end%>
+</div>
+  <%= @post.author %>

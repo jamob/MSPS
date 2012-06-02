@@ -10,6 +10,26 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def signed_in_user?(user)
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Please sign in"
+    end
+  end
+  
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Please sign in."
+    end
+  end
+
+  def signed_out_user
+    unless !signed_in?
+      redirect_to root_path, notice: "Please sign out first"
+    end
+  end
+
   def sign_out
     current_user = nil
     cookies.delete(:remember_token)
@@ -34,5 +54,15 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.fullpath
+  end
+
+  def admin_user
+    if !signed_in?
+      store_location
+      redirect_to signin_path, notice: "Please sign in."
+    elsif !admin?
+      store_location
+      redirect_to root_path, notice: "What are you trying to do?"
+    end
   end
 end

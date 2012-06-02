@@ -18,6 +18,14 @@ describe "Static pages" do
 
     it_should_behave_like "all static pages"
     it{should_not have_selector('title', :text => '| Home')}
+    
+    let(:user){FactoryGirl.create(:user)}
+    let!(:m1){FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")}
+    let!(:m2){FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")}
+    describe "microposts" do
+      it{should have_content(m1.content)}
+      it{should have_content(m2.content)}
+    end 
   end
 
   describe "Help page" do

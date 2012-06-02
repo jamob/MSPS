@@ -6,39 +6,29 @@ describe "User pages" do
   
   subject{ page }
   
-  describe "contact" do
-    let(:user){FactoryGirl.create(:user)}
+  describe "Administration" do
+    let(:admin){FactoryGirl.create(:admin)}
 
     before do
-      sign_in user
+      sign_in admin
       visit users_path
     end
 
-    it{should have_selector('title', text: 'Contact')}
-    it{should have_selector('h1',    text: 'Contact')}
+    it{should have_selector('title', text: 'Admin')}
+    it{should have_selector('h1',    text: 'Administration')}
   
     it "should least each user" do
       User.all.each do |user|
-        page.should have_selector('li', text: user.name)
+        page.should have_link(user.name, text: user)
       end
     end
-  end
   
-  describe "delete links" do
-    
-    it {should_not have_link('delete')}
-
-    describe "as admin user" do
-      let(:admin){FactoryGirl.create(:admin)}
-      before do
-        sign_in admin
-        visit users_path
-      end
-
-      it{should have_link('delete', href: user_path(User.first))}
-      it "should be able to delete another user" do
-        expect{click_link('delete')}.to change(User, :count).by(-1)
-      end
+    describe "delete links" do
+       
+      it{should have_link('delete', href: user_path(User.last))}
+        it "should be able to delete another user" do
+          expect{click_link('delete')}.to change(User, :count).by(-1)
+        end
       it{should_not have_link('delete', href: user_path(admin))}
     end
   end

@@ -38,7 +38,6 @@ describe "Authentication" do
       it {should have_link('Profile', href: user_path(user))}
       it{should have_link('Settings', href: edit_user_path(user))}
       it {should have_link('Sign out',href: signout_path)}
-      it{should have_link('Users', href: users_path)}
       it {should_not have_link('Sign in', href: signin_path)}
     end
   end
@@ -47,6 +46,16 @@ describe "Authentication" do
 
     describe "for non-signed-in users" do
       let(:user){FactoryGirl.create(:user)}
+
+      describe "in the posts controller" do
+        before{post posts_path}
+        specify{response.should redirect_to(signin_path)}
+      end
+
+      describe "submitting to the destroy action" do
+        before{delete post_path(FactoryGirl.create(:post)) }
+        specify{response.should redirect_to(signin_path)}
+      end
       
       describe "in the Users controller" do
         
@@ -76,10 +85,6 @@ describe "Authentication" do
           end
         end
 
-        describe "visiting the user index" do
-          before{visit users_path}
-          it{should have_selector('title', text: 'Contact')}
-        end
       end
     end
 
@@ -95,10 +100,9 @@ describe "Authentication" do
       end
     end
 
-=begin
     describe "as wrong user" do
       let(:user){FactoryGirl.create(:user)}
-      let(:other_user){FactoryGirl.create(:other_user, name: "Wong Name")}
+      let(:other_user){FactoryGirl.create(:user, name: "Wong Name")}
       before{sign_in user}
 
       describe "visiting Users#edit page" do
@@ -111,7 +115,5 @@ describe "Authentication" do
         specify{response.should redirect_to(root_path)}
       end
     end
-  end
-=end
   end
 end

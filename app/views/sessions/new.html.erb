@@ -2,26 +2,16 @@
 <h1>Sign in</h1>
 
 <div class="row">
+  <div class="span6 offset3">
   <%= form_for(:session, url: sessions_path) do |f| %>
-  <div class="span1 offset3">
       <%= f.label :name %>
-  </div>
-  <div class="span5">
       <%= f.text_field :name %>
-  </div>
-</div>
-<div class="row">
-  <div class="span1 offset3">
+
       <%= f.label :password %>
-  </div>
-  <div class ="span5">
       <%= f.password_field :password %>
-  </div>
-</div>
-<div class="row">
-  <div class="span6 offset4">
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary"%>
-  </div>
-    <% end %>
+
+     <%= f.submit "Sign in", class: "btn btn-large btn-primary"%>
+   <% end %>
+ </div>
 </div>
 <p></p>

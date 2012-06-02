@@ -1,0 +1,23 @@
+<% form_for @post do |x| %>
+
+  <p>
+    Visible: <br />
+    <%= x.check_box :visible %>
+  </p>
+
+  <p>
+    Title: <br />
+    <%= x.text_field :title %>
+  </p>
+
+  <p>
+    Date: <br />
+    <%= x.text_area :content, rows: 15, cols: 50 %>
+  </p>
+
+  <p>
+    <%= submit_tag "Save" %>
+    <%= link_to "Back", posts_path%>
+  </p>
+
+<%end%>

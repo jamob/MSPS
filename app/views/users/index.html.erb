@@ -1,6 +1,5 @@
-<%= provide(:title, 'Contact') %>
-<h1>Contact</h1>
-
+<%= provide(:title, 'Admin') %>
+<h1>Administration</h1>
 
 <% @users.each do |user| %>
 <div class="row">
@@ -8,16 +7,20 @@
     <%= gravatar_for user, size: 52 %>    
   </div>
   <div class = "span2">
-    <%= link_to user.name, user %>
+    <%= link_to user.full_name, user %>
   </div>
   <div class = "span2" %>
   <a href="mailto:<% user.email%>"><%= user.email %></a>
   </div>
   <div class = "span2 offset7">
-    <% if signed_in? && current_user.admin? && !current_user?(user)%>
+    <% if signed_in? && current_user.admin? && !current_user?(user) %>
       <%= link_to "delete", user, method: :delete, confirm: "Are you sure?" %>
     <%end%>
   </div>
 </div>
 <p></p>
 <%end%>
+
+<div class="row">
+  <% link_to "Create User", signup_path, class: "btn btn-large btn-primary" %>
+</div>
