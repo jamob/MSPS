@@ -34,11 +34,38 @@ describe "Authentication" do
         click_button "Sign in"
       end
 
-      it {should have_selector('title', text: user.name)}
+      it {should have_selector('title', text: full_title(''))}
       it {should have_link('Profile', href: user_path(user))}
       it{should have_link('Settings', href: edit_user_path(user))}
       it {should have_link('Sign out',href: signout_path)}
       it {should_not have_link('Sign in', href: signin_path)}
+
+      describe "posts" do
+        let(:post){FactoryGirl.create(:post)}
+        before{visit root_path}
+        it{should have_link('New post', href: new_post_path )}
+          
+          describe "posting" do
+            before{visit new_post_path}
+            it{should have_selector('title', text: full_title('New Post'))}
+            it{should have_selector('h1', text: 'New post')}
+            before do
+              fill_in "Title", with: "Lorem ipsum"
+              fill_in "Content", with: "Dolor sit amete"
+              click_button "Submit post"
+            end
+            it{should have_selector('title', text: full_title(''))}
+            it{should have_selector('div.alert.alert-notice')}
+          end
+
+
+        it{should have_link('Edit', href: edit_post_path(post))}
+        it{should have_link('Delete', href: post_path(Post.last))}
+          it "should be able do delete a post" do
+            expect{click_link('Delete')}.to change(Post :count).by(-1)
+          end
+      end
+
     end
   end
 
@@ -46,15 +73,21 @@ describe "Authentication" do
 
     describe "for non-signed-in users" do
       let(:user){FactoryGirl.create(:user)}
+      let(:post){FactoryGirl.create(:post)}
 
       describe "in the posts controller" do
-        before{post posts_path}
-        specify{response.should redirect_to(signin_path)}
+        before{visit new_post_path}
+        it{should have_selector('title', text: 'Sign in')}
       end
 
       describe "submitting to the destroy action" do
         before{delete post_path(FactoryGirl.create(:post)) }
         specify{response.should redirect_to(signin_path)}
+      end
+
+      describe "submittint to the edit action" do
+        before{visit edit_post_path(post)}
+        it{should have_selector('title', text: 'Sign in')}
       end
       
       describe "in the Users controller" do

@@ -1,3 +1,9 @@
+<% provide(:title, @post.title) %>
+<h1><% if @post.important? %>
+  <font color="red"><%= @post.title %></font>
+<%else%>
+  <%= @post.title %>
+<%end%></h1>
 <%= @post.title %>
 <%= @post.content %>
 <%= link_to "Back", posts_path %>

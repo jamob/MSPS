@@ -1,0 +1,12 @@
+<%provide(:title, 'test') %>
+<h1>Test</h1>
+
+<div class="row">
+  <div class="span10">
+    <% person = User.new %>
+      <% form_for person do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      <%end%>
+    </div>
+  </div>

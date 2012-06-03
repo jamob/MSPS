@@ -1,23 +1,11 @@
-<% form_for @post do |x| %>
+<% provide(:title, "Edit post") %>
+<h1>Edit post</h1>
 
-  <p>
-    Visible: <br />
-    <%= x.check_box :visible %>
-  </p>
+<div class="row">
+  <div class="span10">
+    <%=form_for(@post) do |f| %>
+      <%= render 'form', f: f %>
+    <% end %>
+  </div>
+</div>
 
-  <p>
-    Title: <br />
-    <%= x.text_field :title %>
-  </p>
-
-  <p>
-    Date: <br />
-    <%= x.text_area :content, rows: 15, cols: 50 %>
-  </p>
-
-  <p>
-    <%= submit_tag "Save" %>
-    <%= link_to "Back", posts_path%>
-  </p>
-
-<%end%>

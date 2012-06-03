@@ -20,9 +20,9 @@ describe "Static pages" do
     it{should_not have_selector('title', :text => '| Home')}
     
     let(:user){FactoryGirl.create(:user)}
-    let!(:m1){FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")}
-    let!(:m2){FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")}
-    describe "microposts" do
+    let!(:m1){FactoryGirl.create(:post, author: user.full_name, content: "Lorem ipsum", date: Time.now.strftime("%l:%M %p, %e/%m/%Y"))}
+    let!(:m2){FactoryGirl.create(:post, author: user.full_name, content: "Dolor sit amet", date: (Time.now-300).strftime("%l:%M %p, %e/%m/%Y"))}
+    describe "posts" do
       it{should have_content(m1.content)}
       it{should have_content(m2.content)}
     end 

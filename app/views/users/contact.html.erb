@@ -13,19 +13,21 @@
 </div>
 <p></p>
 <% @users.each do |user| %>
-<div class="row">
-  <div class="span1 offset1">
-    <%= gravatar_for user, size: 52 %>    
+  <% if !user.position.nil? %>
+    <div class="row">
+      <div class="span1 offset1">
+         <%= gravatar_for user, size: 52 %>    
+      </div>
+      <div class = "span2">
+         <%= link_to user.full_name, user %>
+      </div>
+      <div class = "span3" >
+        <a href="mailto:<% user.email%>"><%= user.email %></a>
+      </div>
+      <div class = "span2" >
+        <%= user.position %>
+      </div>
   </div>
-  <div class = "span2">
-    <%= link_to user.full_name, user %>
-  </div>
-  <div class = "span3" >
-  <a href="mailto:<% user.email%>"><%= user.email %></a>
-</div>
-<div class = "span2" >
-  <%= user.position %>
-</div>
-</div>
-<p></p>
+    <p></p>
+  <%end%>
 <%end%>

@@ -1,0 +1,5 @@
+<p> posted at <font color=#ce952c><%= p.date %></font><%# if !p.author.blank?; " by "+ p.author; end %></p>
+  <% if signed_in? %>
+    <%= link_to "Edit", edit_post_path(p) %>
+    <%= link_to "Delete", p, method: :delete, confirm: "Are you sure?" %>
+  <%end%>

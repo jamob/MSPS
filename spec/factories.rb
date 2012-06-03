@@ -12,6 +12,8 @@ FactoryGirl.define do
 
   factory :post do
     content "Lorem ipsum"
-    user
+    title "Dolor sit amete"
+    author "Jamob"
+    date "8:13 AM, 2/06/2012"
   end
 end

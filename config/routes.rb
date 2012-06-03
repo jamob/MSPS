@@ -6,13 +6,13 @@ MSPS::Application.routes.draw do
   resources :posts
   resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup', to: 'users#new'
-  match '/signin', to: 'sessions#new'
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
-  match '/help',   to: 'static_pages#help'
-  match '/about',  to: 'static_pages#about'
-  match 'contact', to: 'users#contact'
-
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'users#contact'
+  match '/test',    to: 'static_pages#test'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

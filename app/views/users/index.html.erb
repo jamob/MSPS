@@ -7,12 +7,12 @@
     <%= gravatar_for user, size: 52 %>    
   </div>
   <div class = "span2">
-    <%= link_to user.full_name, user %>
+    <%= link_to user.full_name, edit_user_path(user) %>
   </div>
-  <div class = "span2" %>
+  <div class = "span3" %>
   <a href="mailto:<% user.email%>"><%= user.email %></a>
   </div>
-  <div class = "span2 offset7">
+  <div class = "span2">
     <% if signed_in? && current_user.admin? && !current_user?(user) %>
       <%= link_to "delete", user, method: :delete, confirm: "Are you sure?" %>
     <%end%>
@@ -20,7 +20,7 @@
 </div>
 <p></p>
 <%end%>
-
-<div class="row">
-  <% link_to "Create User", signup_path, class: "btn btn-large btn-primary" %>
+<div class="row center">
+  <%= link_to "Create User", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+<br />

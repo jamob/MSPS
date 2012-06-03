@@ -1,21 +1,20 @@
 <h1>MSPS</h1>
-<% if signed_in? %>
-  <%= link_to "New post", new_post_path %>
-<% end%>
+<div class='center'>
+  <% if signed_in? %>
+    <%= button_to "New post", new_post_path, method: "get" %>
+  <% end%>
+</div>
 
-<% @posts.each do |p| %>
+<% @posts.reverse!.each do |p| %>
   <div class="row">
-    <div class="span10">
-      <h3><%= link_to p.title, post_path(p) %>, by <%= p.author %></h3>
-
-      <%= p.content.truncate(300) %>    <%= link_to "more", post_path(p)%><br />
-      <p> posted at <%= p.date %></p>
-        <% if signed_in? %>
-        <br />
-        <%= link_to "Edit", edit_post_path(p) %>
-        <%= link_to "Delete", p, method: :delete, confirm: "Are you sure?" %>
-      <%end%>
-    </div>
+      <h3><%= link_to p.title, post_path(p) %></h3>
+        <p></p> 
+        <p><% if p.content.length > 300 %>
+          <%= p.content.truncate(300) %>    <%= link_to "more", post_path(p)%>
+        <% else %>
+          <%= p.content %>
+        <%end%></p>
+        <%= render 'bottom', p: p%>
   </div>
   <p></p>
   <br />

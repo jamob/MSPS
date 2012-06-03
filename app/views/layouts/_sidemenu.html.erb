@@ -1,4 +1,4 @@
-<div class="span2">
+<div class="span3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li class="nav-header">Archives</li>
@@ -11,6 +11,9 @@
       <li><%= link_to "Events", '#' %></li>
       <li class="nav-header">Administration</li>
         <% if signed_in? %>
+          <% if current_user.admin? %>
+            <li><%= link_to "Users", users_path %></li>
+          <%end%>
           <li><%= link_to "Profile", current_user %></li>
           <li><%= link_to "Settings", edit_user_path(current_user) %></li>
           <li><%= link_to "Sign out", signout_path, method: "delete" %></li>

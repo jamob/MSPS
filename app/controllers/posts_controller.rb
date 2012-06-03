@@ -7,11 +7,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @button_title = "Submit post"
   end
   
   def create
-    @post = Post.new(params[:post])
-
+    @post = Post.new
+    @post.accessible = :all if current_user.admin?
+    @post.attributes = params[:post]
     @post.author = current_user.full_name
     @post.date = Time.now.strftime("%l:%M %p, %e/%m/%Y")
 
@@ -25,10 +27,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @button_title = "Save changes"
   end
 
   def update
     @post = Post.find(params[:id])
+    @post.accessible = :all if current_user.admin?
 
     if @post.update_attributes(params[:post])
       flash[:notice] = "Post updated"

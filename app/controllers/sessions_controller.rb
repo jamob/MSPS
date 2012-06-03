@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :signed_out_user, only: [:create, :new]
+  
   def new
   end
 
