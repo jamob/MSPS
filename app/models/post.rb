@@ -6,4 +6,12 @@ class Post < ActiveRecord::Base
   validates :date, presence: true
   has_many :comments
 
+  def self.search(search)
+    if search
+      find(:all, conditions: ['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}"])
+    else
+      find(:all).reverse!
+    end
+  end
+
 end

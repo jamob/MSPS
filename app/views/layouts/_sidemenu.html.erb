@@ -1,12 +1,14 @@
 <div class="span3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
+      <div id="search">
+        <%= render 'posts/search' %>
       <li class="nav-header">Archives</li>
       <li><%= link_to "Archives", '#' %></li>
       <li class="nav-header">Categories</li>
       <li><%= link_to "Categories", '#' %>
       <li class="nav-header"><%= link_to "Contact", contact_path %></li>
-      <li><%= link_to "MSPS on Facebook", facebook_path %></li>
+      <li><%= link_to "MSPS on Facebook", '#', target: '_blank' %></li>
       <li><%= link_to "MSPS wiki", 'http://www.ugrad.physics.mcgill.ca/wiki/index.php/Main_Page', target: '_blank' %></li>
       <li><%= link_to "Events", '#' %></li>
       <li class="nav-header">Administration</li>

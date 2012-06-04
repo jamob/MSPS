@@ -1,8 +1,8 @@
 atom_feed do |feed|
   feed.title "MSPS"
-  feed.updated @posts.first.created_at
+  feed.updated @messages.first.created_at
 
-  @posts.each do |post|
+  @messages.each do |post|
     feed.entry post do |entry|
       entry.title post.title
       entry.content article.content, :type => 'html'

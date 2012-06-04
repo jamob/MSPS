@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @posts = Post.find(:all, order: "id DESC")
+    @posts = Post.search(params[:search])
   end
 
   def new
