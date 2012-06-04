@@ -2,4 +2,7 @@
 <h1>MSPS Facebook</h1>
 
 <%= @page.name %>
+<% @posts.each do |p| %>
+  <%= p.content %>
+<% end %>
 <%= render 'facebook/facebook_script' %>

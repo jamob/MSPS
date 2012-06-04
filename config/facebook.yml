@@ -3,7 +3,7 @@ development: &defaults
   GRAPH_APP_ID: 366242183436086
   GRAPH_SECRET: 785117f9e125ab08957deb100fc2cbab
   perms: offline_access,manage_pages
-  page_id: "324090001000391"
+  page_id: 324090001000391
 
 test:
   <<: *defaults
