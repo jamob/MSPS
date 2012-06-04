@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
-
+  
   def index
-    @posts = Post.all
+    @posts = Post.find(:all, order: "id DESC")
   end
 
   def new
@@ -51,5 +51,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def feed
+    @posts = Post.all(order: "id DESC")
+    respond_to do |format|
+      format.html
+      format.atom
+    end
   end
 end

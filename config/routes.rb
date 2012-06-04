@@ -6,6 +6,9 @@ MSPS::Application.routes.draw do
   resources :posts
   resources :sessions, only: [:new, :create, :destroy]
 
+  match '/facebook',to: 'facebook#index'
+  match '/feed',    to: 'posts#feed', as: :feed, :defaults => {format: :atom}
+  match '/facebook',to: 'static_pages#facebook'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
