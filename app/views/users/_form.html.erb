@@ -1,3 +1,4 @@
+<div class="span6 offset1">
 <%= render 'shared/error_messages' %>
 
 <%= f.label :name %>
@@ -6,7 +7,7 @@
 <%= f.label :full_name %>
 <%= f.text_field :full_name %>
 
-<% if current_user.admin? %>
+<% if signed_in? && current_user.admin? %>
   <%= f.label :position %>
   <%= f.collection_select :position, Article::POSITIONS, :to_s, :to_s, :include_blank => true %>
 <%end%>
@@ -19,3 +20,4 @@
 
 <%= f.label :password_confirmation, "Confirmation" %>
 <%= f.password_field :password_confirmation %>
+</div>

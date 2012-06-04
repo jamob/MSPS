@@ -12,15 +12,15 @@
   <div class = "span3" %>
   <a href="mailto:<% user.email%>"><%= user.email %></a>
   </div>
-  <div class = "span2">
-    <% if signed_in? && current_user.admin? && !current_user?(user) %>
+  <div class = "span1">
+    <% if current_user.admin? && !current_user?(user) %>
       <%= link_to "delete", user, method: :delete, confirm: "Are you sure?" %>
     <%end%>
   </div>
 </div>
 <p></p>
 <%end%>
-<div class="row center">
-  <%= link_to "Create User", signup_path, class: "btn btn-large btn-primary" %>
+<div class="row">
+  <center><%= link_to "Create User", signup_path, class: "btn btn-large btn-primary" %></center>
 </div>
 <br />

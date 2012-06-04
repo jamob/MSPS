@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
-      xmlns:fb="https://www.facebook.com/2008/fbml">
+<html>
 <head>
   <title><%=full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -9,10 +8,9 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= render 'layouts/fb' %>
   <%= render 'layouts/header' %>
   <div class="container">
-    <div class="span12 offset1">
+      <div class="span12 offset1">
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>

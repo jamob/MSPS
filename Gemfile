@@ -7,8 +7,6 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'fb_graph', '2.4.16'
-gem 'multipart-post', '1.1.5'
-gem 'faraday', '0.8.1'
 
 
 # Bundle edge Rails instead:
@@ -17,7 +15,6 @@ gem 'faraday', '0.8.1'
 group :development, :test do
   gem 'sqlite3', '1.3.6'
   gem 'rspec-rails', '2.10.1'
-  gem 'guard-rspec', '0.7.3'
   gem 'annotate', '2.4.0'
 end
 
@@ -43,10 +40,7 @@ group :test do
   gem 'rspec-rails', '2.10.1'
   gem 'rb-inotify', '0.8.8', :require => false
   gem 'libnotify', '0.7.2'
-  gem 'guard-spork', '0.8.0'
-  gem 'spork', '0.9.2'
   gem 'factory_girl_rails', '1.4.0'
-  gem 'cucumber-rails', '1.3.0', require: false
   gem 'database_cleaner','0.7.2'
 end
 

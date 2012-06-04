@@ -3,7 +3,9 @@ MSPS::Application.routes.draw do
   root to: 'posts#index'
 
   resources :users
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/facebook',to: 'facebook#index'
